@@ -12,10 +12,17 @@ const FOCUS_AREAS = [
 
 export default function About() {
   return (
-    <section id="about" className="px-6 py-24 sm:py-32">
+    <section id="about" className="relative px-6 py-24 sm:py-32">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute -top-10 left-[8%] h-72 w-72 rounded-full bg-lavender/10 blur-[100px]" />
+      </div>
+
       <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
         <Reveal className="mx-auto w-full max-w-sm lg:mx-0">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-line bg-cream">
+          <div className="shadow-elegant relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-line bg-cream">
             <PortraitOrPlaceholder />
             <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-plum/5" />
           </div>

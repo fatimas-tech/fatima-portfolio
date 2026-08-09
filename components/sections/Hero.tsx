@@ -17,7 +17,10 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   },
 };
 
@@ -27,6 +30,16 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-[92vh] items-center px-6 pt-28 pb-16"
     >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-lavender/15 blur-[130px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[38%] -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose/10 blur-[100px]"
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -65,12 +78,14 @@ export default function Hero() {
           >
             View projects
           </a>
+
           <a
             href="#about"
             className="rounded-full border border-line bg-ivory/70 px-6 py-3 text-sm font-medium text-plum backdrop-blur-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             About me
           </a>
+
           <a
             href="/resume/Fatima_AbuBakar_CV.pdf"
             download
@@ -94,9 +109,11 @@ export default function Hero() {
             <GithubIcon className="h-4 w-4" aria-hidden="true" />
             GitHub
           </a>
+
           <span className="text-line" aria-hidden="true">
             ·
           </span>
+
           <a
             href="https://www.linkedin.com/in/fatima-abu-bakar-10183530a/"
             target="_blank"

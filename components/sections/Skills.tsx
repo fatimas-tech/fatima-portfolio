@@ -5,7 +5,14 @@ import Reveal from "@/components/effects/Reveal";
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-24 sm:py-32">
+    <section id="skills" className="relative px-6 py-24 sm:py-32">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute -top-16 right-[6%] h-80 w-80 rounded-full bg-rose/10 blur-[110px]" />
+      </div>
+
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Skills"
@@ -24,10 +31,16 @@ export default function Skills() {
                   : ""
               }
             >
-              <div className="h-full rounded-[1.75rem] border border-line bg-ivory/60 p-6 backdrop-blur-sm sm:p-7">
-                <h3 className="font-display text-xl italic font-medium text-plum">
-                  {group.title}
-                </h3>
+              <div className="shadow-elegant shadow-elegant-hover h-full rounded-[1.75rem] border border-line bg-ivory/60 p-6 backdrop-blur-sm transition-colors hover:border-lavender-deep/30 sm:p-7">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-lavender-deep/70"
+                    aria-hidden="true"
+                  />
+                  <h3 className="font-display text-xl italic font-medium text-plum">
+                    {group.title}
+                  </h3>
+                </div>
                 <p className="mt-1.5 text-sm text-plum-soft">
                   {group.description}
                 </p>

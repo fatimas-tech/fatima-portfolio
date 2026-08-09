@@ -25,7 +25,14 @@ const CONTACT_LINKS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 py-24 sm:py-32">
+    <section id="contact" className="relative px-6 py-24 sm:py-32">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-sage/10 blur-[110px]" />
+      </div>
+
       <div className="mx-auto max-w-4xl">
         <Reveal className="text-center">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-lavender-deep">
@@ -33,9 +40,11 @@ export default function Contact() {
             Contact
             <span className="h-px w-6 bg-lavender-deep" aria-hidden="true" />
           </span>
+
           <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl italic font-light text-plum text-balance sm:text-4xl md:text-5xl">
             Have an idea, opportunity, or project in mind?
           </h2>
+
           <p className="mx-auto mt-4 flex max-w-md items-center justify-center gap-1.5 text-sm text-plum-soft">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             Based in Lahore, Pakistan — open to remote and on-site roles
@@ -48,23 +57,30 @@ export default function Contact() {
               <a
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-ivory/60 p-6 transition-colors hover:border-lavender-deep/40"
+                rel={
+                  href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="shadow-elegant shadow-elegant-hover group flex h-full flex-col justify-between rounded-2xl border border-line bg-ivory/60 p-6 transition-colors hover:border-lavender-deep/40"
               >
                 <div className="flex items-center justify-between">
                   <Icon
                     className="h-5 w-5 text-lavender-deep"
                     aria-hidden="true"
                   />
+
                   <ArrowUpRight
                     className="h-4 w-4 text-plum-soft/50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     aria-hidden="true"
                   />
                 </div>
+
                 <div className="mt-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-plum-soft/70">
                     {label}
                   </p>
+
                   <p className="mt-1 break-words text-sm font-medium text-plum">
                     {value}
                   </p>

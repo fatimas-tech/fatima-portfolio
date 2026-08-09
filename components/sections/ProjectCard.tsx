@@ -23,7 +23,7 @@ export default function ProjectCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-line bg-ivory/70 backdrop-blur-sm"
+      className="shadow-elegant shadow-elegant-hover ring-1 ring-inset ring-plum/[0.03] group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-line bg-ivory/70 backdrop-blur-sm hover:border-lavender-deep/30"
     >
       <button
         onClick={() => onOpen(project)}
@@ -40,7 +40,11 @@ export default function ProjectCard({
               src={project.image}
               alt={project.imageAlt}
               fill
-              sizes={large ? "(max-width: 1024px) 100vw, 800px" : "(max-width: 1024px) 100vw, 400px"}
+              sizes={
+                large
+                  ? "(max-width: 1024px) 100vw, 800px"
+                  : "(max-width: 1024px) 100vw, 400px"
+              }
               className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
           ) : (
@@ -73,9 +77,11 @@ export default function ProjectCard({
           <span className="text-xs font-semibold uppercase tracking-[0.15em] text-lavender-deep">
             {project.category}
           </span>
+
           <h3 className="mt-2 font-display text-2xl italic font-light text-plum">
             {project.name}
           </h3>
+
           <p className="mt-3 flex-1 text-sm leading-relaxed text-plum-soft">
             {project.description}
           </p>
@@ -89,6 +95,7 @@ export default function ProjectCard({
                 {tech}
               </span>
             ))}
+
             {project.technologies.length > 4 && (
               <span className="rounded-full border border-line bg-cream px-2.5 py-1 text-xs font-medium text-plum-soft">
                 +{project.technologies.length - 4}
@@ -112,6 +119,7 @@ export default function ProjectCard({
               Repository
             </a>
           )}
+
           {project.live && (
             <a
               href={project.live}

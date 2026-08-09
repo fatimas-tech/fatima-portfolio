@@ -12,7 +12,14 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="px-6 py-24 sm:py-32">
+    <section id="projects" className="relative px-6 py-24 sm:py-32">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue/10 blur-[120px]" />
+      </div>
+
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Projects"
