@@ -12,13 +12,16 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative px-6 py-24 sm:py-32">
+    <section id="projects" className="relative px-6 py-24 sm:py-32 lg:px-8">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue/10 blur-[120px]" />
-      </div>
+        className="pointer-events-none absolute left-[8%] top-[18%] h-72 w-72 rounded-full bg-rose/8 blur-[120px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[8%] right-[8%] h-64 w-64 rounded-full bg-lavender/8 blur-[110px]"
+      />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading
@@ -37,6 +40,7 @@ export default function Projects() {
               <ProjectCard
                 project={project}
                 onOpen={setActiveProject}
+                hasImage={Boolean(project.image)}
                 large={project.featured}
               />
             </Reveal>
@@ -44,7 +48,10 @@ export default function Projects() {
         </div>
       </div>
 
-      <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      <ProjectModal
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </section>
   );
 }

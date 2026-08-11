@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --color-ivory: #FBF7F1;
-  --color-cream: #F4EEE3;
-  --color-lavender: #A896C9;
-  --color-lavender-deep: #8A73B0;
-  --color-rose: #DDA9A0;
-  --color-blue: #A8C0DA;
-  --color-sage: #A7C9AE;
-  --color-plum: #2C2233;
-  --color-plum-soft: #5C4F66;
-  --color-line: rgba(44, 34, 51, 0.1);
+  --color-ivory: #fffafd;
+  --color-cream: #fdf5f7;
+
+  --color-lavender: #b9a4e0;
+  --color-lavender-deep: #8f6bc2;
+
+  --color-rose: #efa9b8;
+  --color-blue: #9fc8ec;
+  --color-sage: #a8d6b5;
+
+  --color-plum: #30233a;
+  --color-plum-soft: #62546d;
+
+  --color-line: rgba(82, 59, 101, 0.13);
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -27,25 +31,9 @@
   --color-plum: var(--color-plum);
   --color-plum-soft: var(--color-plum-soft);
   --color-line: var(--color-line);
+
   --font-display: var(--font-display);
   --font-body: var(--font-body);
-
-  --animate-float-slow: float-slow 14s ease-in-out infinite;
-  --animate-float-slower: float-slow 20s ease-in-out infinite;
-  --animate-grain: grain 8s steps(10) infinite;
-
-  @keyframes float-slow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(2%, -3%) scale(1.04); }
-  }
-  @keyframes grain {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-1%, -2%); }
-    30% { transform: translate(1%, 2%); }
-    50% { transform: translate(-2%, 1%); }
-    70% { transform: translate(2%, -1%); }
-    90% { transform: translate(-1%, 2%); }
-  }
 }
 
 * {
@@ -54,30 +42,46 @@
 
 html {
   scroll-behavior: smooth;
+  background: #F4E9F7;
 }
 
 body {
-  background: var(--color-ivory);
+  min-height: 100vh;
   color: var(--color-plum);
   font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  /*
+   * The visible pastel atmosphere lives in AmbientBackground.tsx (a fixed,
+   * viewport-pinned layer). Body only needs a plain fallback colour —
+   * a second, full-document-height gradient stack here would just be
+   * painted underneath that fixed layer and never actually seen, at the
+   * cost of extra paint work on every page. Keep this simple.
+   */
+  background: #F4E9F7;
 }
 
 ::selection {
   background: var(--color-lavender);
-  color: var(--color-ivory);
+  color: white;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-lavender-deep);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -93,48 +97,64 @@ body {
   text-wrap: balance;
 }
 
+/* Soft texture over the page */
 .grain-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.035;
+  opacity: 0.025;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(185, 164, 224, 0.08);
+}
+
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: var(--color-lavender);
+  background: linear-gradient(
+    180deg,
+    var(--color-lavender),
+    var(--color-rose)
+  );
   border-radius: 999px;
 }
 
-/* Subtle card depth — used on project cards, skill groups, contact tiles */
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--color-lavender-deep);
+}
+
+/* Softer, more colorful cards */
 .shadow-elegant {
   box-shadow:
-    0 1px 1px rgba(44, 34, 51, 0.03),
-    0 10px 28px -16px rgba(44, 34, 51, 0.16);
+    0 1px 2px rgba(48, 35, 58, 0.03),
+    0 14px 34px -18px rgba(143, 107, 194, 0.22),
+    0 8px 25px -20px rgba(239, 169, 184, 0.2);
 }
 
-.shadow-elegant-hover {
-  transition: box-shadow 0.35s ease, border-color 0.35s ease;
-}
-
-.shadow-elegant-hover:hover {
-  box-shadow:
-    0 2px 6px rgba(44, 34, 51, 0.05),
-    0 22px 48px -18px rgba(138, 115, 176, 0.28);
-}
-
-/* Fine gradient divider for tiny decorative accents */
-.divider-fade {
-  height: 1px;
+.divider-accent {
+  display: inline-block;
+  height: 2px;
+  width: 1.75rem;
+  border-radius: 999px;
   background: linear-gradient(
     90deg,
-    transparent,
-    var(--color-line) 50%,
-    transparent
+    var(--color-lavender-deep),
+    var(--color-rose),
+    var(--color-blue)
   );
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
 }

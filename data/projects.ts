@@ -121,39 +121,7 @@ export const projects: Project[] = [
     imageAlt: "HeadlessHydra combobox demo interfaces sharing one headless hook",
     status: "shipped",
   },
-  {
-    slug: "accessable",
-    name: "AccessAble",
-    category: "Final Year Project · Accessibility",
-    description:
-      "An AI-assisted browser accessibility ecosystem designed to reduce common accessibility barriers faced by users with visual, hearing and motor impairments.",
-    longDescription:
-      "AccessAble is my Final Year Project: a Chrome Extension (Manifest V3) paired with a Python/FastAPI backend intelligence layer, aimed at making the everyday web more usable for people with visual, hearing and motor impairments. The extension detects accessibility issues and enhances the DOM dynamically, caching results locally with chrome.storage.local, while the backend proxies AI-assisted processing — including image accessibility and alt-text generation — so API keys never touch the client. It's built around a WCAG 2.1 focus and a modular architecture designed to grow. Right now, the image accessibility module is in active development; video captioning and voice-based navigation are architecturally planned but not yet built.",
-    technologies: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Chrome Extension Manifest V3",
-      "Python",
-      "FastAPI",
-      "Uvicorn",
-      "REST APIs",
-      "AI/API Integration",
-      "chrome.storage.local",
-    ],
-    highlights: [
-      "Accessibility issue detection with dynamic DOM enhancement",
-      "AI-assisted image accessibility and alt-text generation (active development)",
-      "Backend proxy architecture keeps API keys off the client",
-      "Browser-side caching via chrome.storage.local",
-      "WCAG 2.1-focused, modular architecture",
-      "Planned: video captioning support and voice-based navigation",
-    ],
-    image: "/images/projects/accessable/cover.jpg",
-    imageAlt: "AccessAble Final Year Project — accessibility browser extension architecture",
-    academic: true,
-    status: "in-progress",
-  },
+  
 ];
 
 export const getProjectBySlug = (slug: string): Project | undefined =>
