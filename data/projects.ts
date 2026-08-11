@@ -65,6 +65,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/soniq/cover.jpg",
     imageAlt: "SONIQ 3D headphone showcase with cinematic scroll-driven scenes",
+    github: "https://github.com/fatimas-tech/soniq-3d-showcase",
     featured: true,
     status: "shipped",
   },
@@ -98,6 +99,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/ping/cover.jpg",
     imageAlt: "Ping messaging interface showing multiple conversation threads",
+    github: "https://github.com/fatimas-tech/ping-chat",
     status: "shipped",
   },
   {
@@ -119,6 +121,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/headlesshydra/cover.jpg",
     imageAlt: "HeadlessHydra combobox demo interfaces sharing one headless hook",
+    github: "https://github.com/fatimas-tech/headless-hydra",
     status: "shipped",
   },
   
